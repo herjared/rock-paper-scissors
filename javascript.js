@@ -36,26 +36,42 @@ function playerPlay() {
             }
         }
 }
-
-
-
-let playerMove = playerPlay();
-let computerMove = computerPlay();
-
+/** This function plays a round of Rock Paper Scissors with the computer and user moves
+ * winner is sent to console. 1 is returned if player wins and 0 if player loses. 2 is return if its a tie
+*/
 function playRound(player,computer){
     if (player === computer) {
-        return `It's a tie! ${player} ties ${computer}`;
+        console.log(`It's a tie! ${player} ties ${computer}`);
+        return 2;
     }else if (player ==="rock" && computer === "scissors"){
-        return `You WIN! ${player} beats ${computer}`;
+        console.log(`You WIN! ${player} beats ${computer}`);
+        return 1;
     }else if(player === "scissors" && computer === "paper"){
-        return `You WIN! ${player} beats ${computer}`;
+        console.log(`You WIN! ${player} beats ${computer}`);
+        return 1;
     }else if(player === "paper" && computer === "rock"){
-        return `You WIN! ${player} beats ${computer}`;
+        console.log(`You WIN! ${player} beats ${computer}`);
+        return 1;
     }else {
-        return `You LOSE! ${computer} beats ${player}`;
+        console.log(`You LOSE! ${computer} beats ${player}`);
+        return 0;
     }
 }
+/** This function plays five games of rock paper scissors and displays round results and score */
 function game(){
-
+    let result = 2;
+    let playerScore = 0;
+    let computerScore =0;
+    for(let i=0;i<5;i++){
+        let playerMove = playerPlay();
+        let computerMove = computerPlay();
+        result = playRound(playerMove,computerMove);
+        if (result === 0) {
+            computerScore++;
+        } else if(result ===1){
+            playerScore++; 
+        }
+        console.log(`Score:   Player ${playerScore} Computer ${computerScore}`);
+    }
 }
-console.log(playRound(playerMove,computerMove));
+game();
