@@ -57,7 +57,7 @@ function playRound(player,computer){
         return 0;
     }
 }
-/** This function plays five games of rock paper scissors and displays round results and score */
+/** This function plays five games of rock paper scissors and displays round results and score and winner at the end */
 function game(){
     let result = 2;
     let playerScore = 0;
@@ -72,6 +72,13 @@ function game(){
             playerScore++; 
         }
         console.log(`Score:   Player ${playerScore} Computer ${computerScore}`);
+    }
+    if (playerScore > computerScore){
+        console.log(`PLAYER WINS!`) ;
+    }else if (playerScore === computerScore){
+        console.log(`ITS A TIE!`) ;
+    }else {
+        console.log(`COMPUTER WINS!`) ;
     }
 }
 game();
