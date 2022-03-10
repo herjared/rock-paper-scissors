@@ -17,7 +17,7 @@ function computerPlay () {
             console.log("something is wrong");
     }
 }
-
+ /** This function asks player for a move until player inputs either rock paper or scissors */
 function playerPlay() {
         let x=0;
         while (x<1){
@@ -42,6 +42,20 @@ function playerPlay() {
 let playerMove = playerPlay();
 let computerMove = computerPlay();
 
-function playGame(player,computer){
-    if 
+function playRound(player,computer){
+    if (player === computer) {
+        return `It's a tie! ${player} ties ${computer}`;
+    }else if (player ==="rock" && computer === "scissors"){
+        return `You WIN! ${player} beats ${computer}`;
+    }else if(player === "scissors" && computer === "paper"){
+        return `You WIN! ${player} beats ${computer}`;
+    }else if(player === "paper" && computer === "rock"){
+        return `You WIN! ${player} beats ${computer}`;
+    }else {
+        return `You LOSE! ${computer} beats ${player}`;
+    }
 }
+function game(){
+
+}
+console.log(playRound(playerMove,computerMove));
