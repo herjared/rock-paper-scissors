@@ -1,4 +1,12 @@
 
+
+/** create event listener for all buttons that plays a round on click with the class of
+ * the button that was clicked and the result of the computer play function */
+ const btn = document.querySelectorAll("button");
+ btn.forEach(buttons=>buttons.addEventListener('click',()=>playRound((buttons.className),computerPlay())));
+
+ const results = document.querySelector('.results');
+ 
 /** This function make a move for the computer returning either
  * rock,paper,scissors as a string */
 function computerPlay () {
@@ -7,13 +15,13 @@ function computerPlay () {
     switch (number){
         case 1 :
             return "rock";
-            break;
+            
         case 2:
             return"paper";
-            break;
+            
         case 3:
             return "scissors";
-            break;
+            
         default:
             console.log("something is wrong");
     }
@@ -75,4 +83,4 @@ function game(){
         console.log(`COMPUTER WINS!`) ;
     }
 }
-game();
+
