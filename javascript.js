@@ -35,26 +35,7 @@ function computerPlay () {
             console.log("something is wrong");
     }
 }
- /** This function asks player for a move until player inputs either rock paper
-  * or scissors */
-function playerPlay() {
-        let x=0;
-        while (x<1){
-            let move = prompt("Enter rock or paper or scissors");
-            let lowerCasedMove = "";
-            lowerCasedMove = move.toLowerCase();
-            if (lowerCasedMove === "rock"){
-                x++;
-                return "rock";
-            } else if (lowerCasedMove === "paper") {
-                x++;
-                return "paper";
-            }else if (lowerCasedMove === "scissors") {
-                x++;
-                return "scissors";
-            }
-        }
-}
+
 /** This function plays a round of Rock Paper Scissors with the computer and
  * user moves winner is sent to console. 1 is returned if player wins and 0 if
  * player loses. 2 is return if its a tie
