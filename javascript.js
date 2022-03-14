@@ -7,12 +7,15 @@
 
  /**Create value for divs on page so that they can be targeted and changed within
   * any functions */
- const results = document.querySelector('.results');
+ const round = document.querySelector('.round');
  const score = document.querySelector('.score');
+ const endResult =document.querySelector('.endResult');
 
-
+/**Initialize scores for player and computer on page load up. Only done once so
+ * that scores aren't reset after each round  */
 let playerScore=0;
 let computerScore=0;
+
 /** This function make a move for the computer returning either
  * rock,paper,scissors as a string */
 function computerPlay () {
@@ -58,19 +61,19 @@ function playerPlay() {
 */
 function playRound(player,computer){
     if (player === computer) {
-        results.textContent = `It's a tie! ${player} ties ${computer}`;
+        round.textContent = `It's a tie! ${player} ties ${computer}`;
         return 2;
     }else if (player ==="rock" && computer === "scissors"){
-        results.textContent=`You WIN this round! ${player} beats ${computer}`;
+        round.textContent=`You WIN this round! ${player} beats ${computer}`;
         return 1;
     }else if(player === "scissors" && computer === "paper"){
-        results.textContent=`You WIN this round! ${player} beats ${computer}`;
+        round.textContent=`You WIN this round! ${player} beats ${computer}`;
         return 1;
     }else if(player === "paper" && computer === "rock"){
-        results.textContent=`You WIN this round! ${player} beats ${computer}`;
+        round.textContent=`You WIN this round! ${player} beats ${computer}`;
         return 1;
     }else {
-        results.textContent=`You LOSE this round! ${computer} beats ${player}`;
+        round.textContent=`You LOSE this round! ${computer} beats ${player}`;
         return 0;
     }
 }
@@ -89,12 +92,23 @@ function game(playerChoice){
         }
     } else {
         checkScore();
+        
     }
 }
 
 function checkScore(playerTotal,ComputerTotal){
+    endResult.textContent = '';
     score.textContent = `Player Score : ${playerTotal} Computer Score : ${ComputerTotal}`;
-    if (playerScore === 5 || playerScore === 5){
-        
+    if (playerScore === 5 || computerScore === 5){
+        if (playerScore>computerScore){
+            score.textContent = '';
+            endResult.textContent="You WIN the GAME."
+        } else{
+            endResult.textContent="You LOST the GAME. Try better next time."
+            score.textContent = '';
+
+        }
+        playerScore = 0;
+        computerScore= 0;
     }
 }
