@@ -96,6 +96,8 @@ function game(playerChoice){
     }
 }
 
+/** Display score and game results if a player reaches 5. Reset score after a
+ * winner is reached */
 function checkScore(playerTotal,ComputerTotal){
     endResult.textContent = '';
     score.textContent = `Player Score : ${playerTotal} Computer Score : ${ComputerTotal}`;
