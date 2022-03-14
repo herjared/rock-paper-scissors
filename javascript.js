@@ -3,10 +3,16 @@
 /** create event listener for all buttons that plays a round on click with the class of
  * the button that was clicked and the result of the computer play function */
  const btn = document.querySelectorAll("button");
- btn.forEach(buttons=>buttons.addEventListener('click',()=>playRound((buttons.className),computerPlay())));
+ btn.forEach(buttons=>buttons.addEventListener('click',()=>game(buttons.className)));
 
+ /**Create value for divs on page so that they can be targeted and changed within
+  * any functions */
  const results = document.querySelector('.results');
- 
+ const score = document.querySelector('.score');
+
+
+let playerScore=0;
+let computerScore=0;
 /** This function make a move for the computer returning either
  * rock,paper,scissors as a string */
 function computerPlay () {
@@ -52,35 +58,43 @@ function playerPlay() {
 */
 function playRound(player,computer){
     if (player === computer) {
-        console.log(`It's a tie! ${player} ties ${computer}`);
+        results.textContent = `It's a tie! ${player} ties ${computer}`;
         return 2;
     }else if (player ==="rock" && computer === "scissors"){
-        console.log(`You WIN! ${player} beats ${computer}`);
+        results.textContent=`You WIN this round! ${player} beats ${computer}`;
         return 1;
     }else if(player === "scissors" && computer === "paper"){
-        console.log(`You WIN! ${player} beats ${computer}`);
+        results.textContent=`You WIN this round! ${player} beats ${computer}`;
         return 1;
     }else if(player === "paper" && computer === "rock"){
-        console.log(`You WIN! ${player} beats ${computer}`);
+        results.textContent=`You WIN this round! ${player} beats ${computer}`;
         return 1;
     }else {
-        console.log(`You LOSE! ${computer} beats ${player}`);
+        results.textContent=`You LOSE this round! ${computer} beats ${player}`;
         return 0;
     }
 }
 /** This function plays five games of rock paper scissors and displays round
  * results and score and winner at the end */
-function game(){
-    let result = 2;
-    let playerScore = 0;
-    let computerScore =0;
-    
-    if (playerScore > computerScore){
-        console.log(`PLAYER WINS!`) ;
-    }else if (playerScore === computerScore){
-        console.log(`ITS A TIE!`) ;
-    }else {
-        console.log(`COMPUTER WINS!`) ;
+function game(playerChoice){
+    let computerChoice = computerPlay();
+    let result = playRound(playerChoice,computerChoice);
+    if (playerScore !== 5 && computerScore !== 5){
+        if (result ===1){
+            playerScore++;
+            checkScore(playerScore,computerScore);
+        }else if (result ===0){
+            computerScore++;
+            checkScore(playerScore,computerScore);
+        }
+    } else {
+        checkScore();
     }
 }
 
+function checkScore(playerTotal,ComputerTotal){
+    score.textContent = `Player Score : ${playerTotal} Computer Score : ${ComputerTotal}`;
+    if (playerScore === 5 || playerScore === 5){
+        
+    }
+}
